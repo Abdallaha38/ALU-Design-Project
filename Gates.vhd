@@ -245,6 +245,30 @@ END model;
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
+
+ENTITY or_gate_8 IS
+  PORT (
+    a : IN STD_LOGIC;
+    b : IN STD_LOGIC;
+    c : IN STD_LOGIC;
+    d : IN STD_LOGIC;
+    e : IN STD_LOGIC;
+    f : IN STD_LOGIC;
+    g : IN STD_LOGIC;
+    h : IN STD_LOGIC;
+    z : OUT STD_LOGIC
+  );
+END or_gate_8;
+ 
+ARCHITECTURE model OF or_gate_8 IS
+BEGIN
+  z <= a OR b OR c OR d OR e OR f OR g OR h;
+END model;
+
+--------------------------------------------------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
  
 ENTITY xor_gate_3 IS
   PORT (
