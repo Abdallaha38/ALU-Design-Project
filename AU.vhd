@@ -18,6 +18,7 @@ ARCHITECTURE structural OF AU IS
   SIGNAL Ip2Sel : STD_LOGIC_VECTOR (1 downto 0);
   SIGNAL sub : STD_LOGIC;
   SIGNAL sub4 : STD_LOGIC_VECTOR (3 downto 0);
+  SIGNAL signe : STD_LOGIC;
   
   COMPONENT full_adder IS
     PORT(
@@ -38,6 +39,14 @@ ARCHITECTURE structural OF AU IS
   END COMPONENT;
   
   COMPONENT or_gate IS
+    PORT(
+      a : IN STD_LOGIC;
+      b : IN STD_LOGIC;
+      z : OUT STD_LOGIC
+    );
+  END COMPONENT;
+
+  COMPONENT xor_gate IS
     PORT(
       a : IN STD_LOGIC;
       b : IN STD_LOGIC;
@@ -145,8 +154,13 @@ BEGIN
     A => input1,
     B => P_input2,
     Ci => sub,
-    Co => Res(4),
+    Co => signe,
     SUM => Res(3 downto 0)
   );
   
+  S_handle: xor_gate PORT MAP (
+    a => sub,
+    b => signe,
+    z => Res(4)
+  );
 END structural;

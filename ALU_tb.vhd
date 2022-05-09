@@ -41,17 +41,17 @@ begin
  
   process is
   begin
-    r_SIG1 <= "1110";
+    r_SIG1 <= "0000";
     r_SIG2 <= "0011";
     selector <= "0001";
     wait for 10 ns;
-    r_SIG1 <= "0110";
+    r_SIG1 <= "1111";
     r_SIG2 <= "1000";
-    selector <= "0100";
+    selector <= "0000";
     wait for 10 ns;
     r_SIG1 <= "1110";
     r_SIG2 <= "0010";
-    selector <= "0101";
+    selector <= "0110";
     wait for 10 ns;  
   end process;
      
