@@ -89,6 +89,17 @@ ARCHITECTURE structural OF AU IS
     );
   END COMPONENT;
   
+  COMPONENT mux4_4 IS
+    PORT(
+      a : IN STD_LOGIC_VECTOR (3 downto 0);
+      b : IN STD_LOGIC_VECTOR (3 downto 0);
+      c : IN STD_LOGIC_VECTOR (3 downto 0);
+      d : IN STD_LOGIC_VECTOR (3 downto 0);
+      s : IN STD_LOGIC_VECTOR (1 downto 0);
+      z : OUT STD_LOGIC_VECTOR (3 downto 0)
+    );
+  END COMPONENT;
+  
 BEGIN
   I1_Selector: I1_Sel PORT MAP (
     a => Sel,
@@ -112,9 +123,15 @@ BEGIN
     b => sub
   );
 
-  --I2_Select: mux4_4 PORT MAP (
+  I2_Select: mux4_4 PORT MAP (
+    a => A,
+    b => "0001",
+    c => "0000",
+    d => "XXXX",
+    s => IpSel(2 downto 1),
+    z => input2
+  );
    
-  
   sub4 <= sub & sub & sub & sub;
 
   SubInverter: xor_gate_2Q PORT MAP (
