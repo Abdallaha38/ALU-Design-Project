@@ -136,7 +136,7 @@ BEGIN
     b => B(3),
     c => carry(2),
     co => Co,
-    z => SUM(0)
+    z => SUM(3)
   );
   
 END structural;

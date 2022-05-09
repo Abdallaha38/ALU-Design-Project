@@ -111,16 +111,16 @@ BEGIN
     );
 
     mux_out: mux8_4 PORT MAP (
-        a : notA_out,
-        b : notB_out,
-        c : and_out,
-        d : nand_out,
-        e : or_out,
-        f : nor_out,
-        g : xor_out,
-        h : xnor_out,
-        s : Sel,
-        z : Res
+        a => notA_out,
+        b => notB_out,
+        c => and_out,
+        d => or_out,
+        e => xor_out,
+        f => xnor_out,
+        g => nand_out,
+        h => nor_out,
+        s => Sel,
+        z => Res
     );
 
 END structural;

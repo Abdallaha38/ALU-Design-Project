@@ -298,28 +298,28 @@ ARCHITECTURE structural OF mux8_1 IS
     d : IN STD_LOGIC;
     z : OUT STD_LOGIC
   );
-END and_gate_4;
+END COMPONENT;
 
   COMPONENT not_gate IS
   PORT(
     a : IN STD_LOGIC;
     z : OUT STD_LOGIC
   );
-END not_gate;
+END COMPONENT;
 
 COMPONENT or_gate_8 IS
   PORT(
-    z0 : IN STD_LOGIC;
-    z1 : IN STD_LOGIC;
-    z2 : IN STD_LOGIC;
-    z3 : IN STD_LOGIC;
-    z4 : IN STD_LOGIC;
-    z5 : IN STD_LOGIC;
-    z6 : IN STD_LOGIC;
-    z7 : IN STD_LOGIC;
-    y : OUT STD_LOGIC
+    a : IN STD_LOGIC;
+    b : IN STD_LOGIC;
+    c : IN STD_LOGIC;
+    d : IN STD_LOGIC;
+    e : IN STD_LOGIC;
+    f : IN STD_LOGIC;
+    g : IN STD_LOGIC;
+    h : IN STD_LOGIC;
+    z : OUT STD_LOGIC
   );
-END or_gate_8;
+END COMPONENT;
 
 BEGIN
   Invert0: not_gate PORT MAP (
@@ -335,7 +335,7 @@ BEGIN
   );
 
   U0: and_gate_4 PORT MAP (
-    a => D0,
+    a => a,
     b => ISel(0),
     c => ISel(1),
     d => ISel(2),
@@ -343,7 +343,7 @@ BEGIN
   );
 
   U1: and_gate_4 PORT MAP (
-    a => D1,
+    a => b,
     b => Sel(0),
     c => ISel(1),
     d => ISel(2),
@@ -351,7 +351,7 @@ BEGIN
   );
 
   U2: and_gate_4 PORT MAP (
-    a => D2,
+    a => c,
     b => ISel(0),
     c => Sel(1),
     d => ISel(2),
@@ -359,7 +359,7 @@ BEGIN
   );
 
   U3: and_gate_4 PORT MAP (
-    a => D3,
+    a => d,
     b => Sel(0),
     c => Sel(1),
     d => ISel(2),
@@ -367,7 +367,7 @@ BEGIN
   );
 
   U4: and_gate_4 PORT MAP (
-    a => D4,
+    a => e,
     b => ISel(0),
     c => ISel(1),
     d => Sel(2),
@@ -375,7 +375,7 @@ BEGIN
   );
 
   U5: and_gate_4 PORT MAP (
-    a => D5,
+    a => f,
     b => Sel(0),
     c => ISel(1),
     d => Sel(2),
@@ -383,7 +383,7 @@ BEGIN
   );
 
   U6: and_gate_4 PORT MAP (
-    a => D6,
+    a => g,
     b => ISel(0),
     c => Sel(1),
     d => Sel(2),
@@ -391,7 +391,7 @@ BEGIN
   );
 
   U7: and_gate_4 PORT MAP (
-    a => D7,
+    a => h,
     b => Sel(0),
     c => Sel(1),
     d => Sel(2),
@@ -399,15 +399,15 @@ BEGIN
   );
 
   U8: or_gate_8 PORT MAP (
-    z0 => U0_OUT,
-    z1 => U1_OUT,
-    z2 => U2_OUT,
-    z3 => U3_OUT,
-    z4 => U4_OUT,
-    z5 => U5_OUT,
-    z6 => U6_OUT,
-    z7 => U7_OUT,
-    y => Z
+    a => U0_OUT,
+    b => U1_OUT,
+    c => U2_OUT,
+    d => U3_OUT,
+    e => U4_OUT,
+    f => U5_OUT,
+    g => U6_OUT,
+    h => U7_OUT,
+    z => z
   );
   
 END structural;
@@ -435,14 +435,14 @@ END mux8_4;
 ARCHITECTURE structural OF mux8_4 IS
   COMPONENT mux8_1 IS
     PORT (
-    A : IN STD_LOGIC;
-    B : IN STD_LOGIC;
-    C : IN STD_LOGIC;
-    D : IN STD_LOGIC;
-    E : IN STD_LOGIC;
-    F : IN STD_LOGIC;
-    G : IN STD_LOGIC;
-    H : IN STD_LOGIC;
+    a : IN STD_LOGIC;
+    b : IN STD_LOGIC;
+    c : IN STD_LOGIC;
+    d : IN STD_LOGIC;
+    e : IN STD_LOGIC;
+    f : IN STD_LOGIC;
+    g : IN STD_LOGIC;
+    h : IN STD_LOGIC;
     Sel : IN STD_LOGIC_VECTOR (2 downto 0);
     z : OUT STD_LOGIC
   );
@@ -450,59 +450,55 @@ END COMPONENT;
 
 BEGIN
   m0: mux8_1 PORT MAP (
-    A => a(0),
-    B => b(0),
-    C => c(0),
-    D => d(0),
-    E => e(0),
-    F => f(0),
-    G => g(0),
-    H => h(0),
+    a => a(0),
+    b => b(0),
+    c => c(0),
+    d => d(0),
+    e => e(0),
+    f => f(0),
+    g => g(0),
+    h => h(0),
     Sel => s,
     z => z(0)
   );
   
   m1: mux8_1 PORT MAP (
-    A => a(1),
-    B => b(1),
-    C => c(1),
-    D => d(1),
-    E => e(1),
-    F => f(1),
-    G => g(1),
-    H => h(1),
+    a => a(1),
+    b => b(1),
+    c => c(1),
+    d => d(1),
+    e => e(1),
+    f => f(1),
+    g => g(1),
+    h => h(1),
     Sel => s,
     z => z(1)
   );
   
   m2: mux8_1 PORT MAP (
-    A => a(2),
-    B => b(2),
-    C => c(2),
-    D => d(2),
-    E => e(2),
-    F => f(2),
-    G => g(2),
-    H => h(2),
+    a => a(2),
+    b => b(2),
+    c => c(2),
+    d => d(2),
+    e => e(2),
+    f => f(2),
+    g => g(2),
+    h => h(2),
     Sel => s,
     z => z(2)
   );
   
   m3: mux8_1 PORT MAP (
-    A => a(3),
-    B => b(3),
-    C => c(3),
-    D => d(3),
-    E => e(3),
-    F => f(3),
-    G => g(3),
-    H => h(3),
+    a => a(3),
+    b => b(3),
+    c => c(3),
+    d => d(3),
+    e => e(3),
+    f => f(3),
+    g => g(3),
+    h => h(3),
     Sel => s,
     z => z(3)
   );
   
 END structural;
-
-
-
-

@@ -10,9 +10,9 @@ END I1_Sel;
     
 ARCHITECTURE structural OF I1_Sel IS
   SIGNAL ISel : STD_LOGIC_VECTOR (2 downto 0);
-  SIGNAL ac : STD_LOGIC_VECTOR (1 downto 0);
-  SIGNAL bc : STD_LOGIC_VECTOR (1 downto 0);
-  SIGNAL cc : STD_LOGIC_VECTOR (2 downto 0);
+  SIGNAL A_ctl : STD_LOGIC_VECTOR (1 downto 0);
+  SIGNAL B_ctl : STD_LOGIC_VECTOR (1 downto 0);
+  SIGNAL O_ctl : STD_LOGIC_VECTOR (2 downto 0);
   
   COMPONENT and_gate IS
     PORT(
@@ -65,47 +65,47 @@ BEGIN
   a1: and_gate PORT MAP (
     a => ISel(1),
     b => ISel(2),
-    z => ac(0)
+    z => A_ctl(0)
   );
   
   a2: and_gate PORT MAP (
     a => Sel(0),
     b => Sel(2),
-    z => ac(1)
+    z => A_ctl(1)
   );
   
   a3: or_gate PORT MAP (
-    a => ac(0),
-    b => ac(1),
-    z => cc(0)
+    a => A_ctl(0),
+    b => A_ctl(1),
+    z => O_ctl(0)
   );
   
   a4: not_gate PORT MAP (
-    a => cc(0),
-    z => cc(1)
+    a => O_ctl(0),
+    z => O_ctl(1)
   );
   
   b1: and_gate PORT MAP (
     a => Sel(1),
     b => ISel(2),
-    z => bc(0)
+    z => B_ctl(0)
   );
   
   b2: and_gate PORT MAP (
     a => ISel(0),
     b => Sel(2),
-    z => bc(1)
+    z => B_ctl(1)
   );
   
   b3: or_gate PORT MAP (
-    a => bc(0),
-    b => bc(1),
-    z => cc(2)
+    a => B_ctl(0),
+    b => B_ctl(1),
+    z => O_ctl(2)
   );
   
   b4: or_gate PORT MAP (
-    a => cc(1),
-    b => cc(2),
+    a => O_ctl(1),
+    b => O_ctl(2),
     z => Z
   );
   
@@ -125,10 +125,10 @@ END I2_Sel;
     
 ARCHITECTURE structural OF I2_Sel IS
   SIGNAL ISel : STD_LOGIC_VECTOR (2 downto 0);
-  SIGNAL hc : STD_LOGIC_VECTOR (1 downto 0);
-  SIGNAL lc : STD_LOGIC_VECTOR (1 downto 0);
-  SIGNAL cc : STD_LOGIC_VECTOR (2 downto 0);
-  SIGNAL ic : STD_LOGIC_VECTOR (2 downto 0);
+  SIGNAL H_ctl : STD_LOGIC_VECTOR (1 downto 0);
+  SIGNAL L_ctl : STD_LOGIC_VECTOR (1 downto 0);
+  SIGNAL O_ctl : STD_LOGIC_VECTOR (2 downto 0);
+  SIGNAL I_ctl : STD_LOGIC_VECTOR (2 downto 0);
   
   COMPONENT and_gate IS
     PORT(
@@ -181,73 +181,73 @@ BEGIN
   a1: and_gate PORT MAP (
     a => Sel(1),
     b => Sel(2),
-    z => cc(0)
+    z => O_ctl(0)
   );
   
   a2: not_gate PORT MAP (
-    a => cc(0),
-    z => ic(1)
+    a => O_ctl(0),
+    z => I_ctl(0)
   );
   
   h1: and_gate PORT MAP (
     a => ISel(0),
     b => ISel(1),
-    z => hc(0)
+    z => H_ctl(0)
   );
   
   h2: and_gate PORT MAP (
     a => Sel(0),
     b => ISel(2),
-    z => hc(1)
+    z => H_ctl(1)
   );
   
   h3: or_gate PORT MAP (
-    a => hc(0),
-    b => hc(1),
-    z => cc(1)
+    a => H_ctl(0),
+    b => H_ctl(1),
+    z => O_ctl(1)
   );
   
   h4: not_gate PORT MAP (
-    a => cc(1),
-    z => ic(1)
+    a => O_ctl(1),
+    z => I_ctl(1)
   );
   
   l1: and_gate_3 PORT MAP (
     a => ISel(0),
     b => Sel(1),
     c => ISel(2),
-    z => lc(0)
+    z => L_ctl(0)
   );
   
   l2: and_gate_3 PORT MAP (
     a => Sel(0),
     b => ISel(1),
     c => Sel(2),
-    z => lc(1)
+    z => L_ctl(1)
   );
   
   l3: or_gate PORT MAP (
-    a => lc(0),
-    b => lc(1),
-    z => cc(2)
+    a => L_ctl(0),
+    b => L_ctl(1),
+    z => O_ctl(2)
   );
   
   l4: not_gate PORT MAP (
-    a => cc(2),
-    z => ic(2)
+    a => O_ctl(2),
+    z => I_ctl(2)
   );
   
-  s0: and_gate_3 PORT MAP (
-    a => ic(0),
-    b => cc(1),
-    c => ic(2),
+  s01: and_gate_3 PORT MAP (
+    a => I_ctl(0),
+    b => O_ctl(1),
+    c => I_ctl(2),
     z => Z(0)
   );
   
-  s1: and_gate_3 PORT MAP (
-    a => ic(0),
-    b => ic(1),
-    c => cc(2),
+  s11: and_gate_3 PORT MAP (
+    a => I_ctl(0),
+    b => I_ctl(1),
+    c => O_ctl(2),
     z => Z(1)
   );
   
@@ -267,7 +267,7 @@ END subSel;
 
 ARCHITECTURE structural OF subSel IS
   SIGNAL ISel : STD_LOGIC_VECTOR (2 downto 0);
-  SIGNAL ac : STD_LOGIC_VECTOR (1 downto 0);
+  SIGNAL ctl : STD_LOGIC_VECTOR (1 downto 0);
   
   COMPONENT and_gate IS
     PORT(
@@ -311,18 +311,18 @@ BEGIN
   a0: and_gate PORT MAP (
     a => Sel(0),
     b => ISel(1),
-    z => ac(0)
+    z => ctl(0)
   );
   
   a1: and_gate PORT MAP (
     a => ISel(1),
     b => Sel(2),
-    z => ac(1)
+    z => ctl(1)
   );
   
   a2: or_gate PORT MAP (
-    a => ac(0),
-    b => ac(0),
+    a => ctl(0),
+    b => ctl(1),
     z => Z
   );
   

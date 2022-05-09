@@ -14,7 +14,8 @@ ARCHITECTURE structural OF AU IS
   SIGNAL input1 : STD_LOGIC_VECTOR (3 downto 0);
   SIGNAL input2 : STD_LOGIC_VECTOR (3 downto 0);
   SIGNAL P_input2 : STD_LOGIC_VECTOR (3 downto 0);
-  SIGNAL IpSel : STD_LOGIC_VECTOR (2 downto 0);
+  SIGNAL Ip1Sel : STD_LOGIC;
+  SIGNAL Ip2Sel : STD_LOGIC_VECTOR (1 downto 0);
   SIGNAL sub : STD_LOGIC;
   SIGNAL sub4 : STD_LOGIC_VECTOR (3 downto 0);
   
@@ -102,25 +103,25 @@ ARCHITECTURE structural OF AU IS
   
 BEGIN
   I1_Selector: I1_Sel PORT MAP (
-    a => Sel,
-    b => IpSel(0)
+    Sel => Sel,
+    Z => Ip1Sel
   );
     
   I1_Select: mux2_4 PORT MAP (
     a => A,
     b => B,
-    s => IpSel(0),
+    s => Ip1Sel,
     z => input1
   );
     
   I2_Selector: I2_Sel PORT MAP (
-    a => Sel,
-    b => IpSel(2 downto 1)
+    Sel => Sel,
+    Z => Ip2Sel
   );
   
   Subtract: subSel PORT MAP (
-    a => Sel,
-    b => sub
+    Sel => Sel,
+    Z => sub
   );
 
   I2_Select: mux4_4 PORT MAP (
@@ -128,7 +129,7 @@ BEGIN
     b => "0001",
     c => "0000",
     d => "XXXX",
-    s => IpSel(2 downto 1),
+    s => Ip2Sel,
     z => input2
   );
    
