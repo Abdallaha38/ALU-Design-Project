@@ -61,22 +61,22 @@ ARCHITECTURE structural OF AU IS
   
   COMPONENT I1_Sel IS
     PORT(
-      a : IN STD_LOGIC_VECTOR (2 downto 0);
-      b : OUT STD_LOGIC
+      Sel : IN STD_LOGIC_VECTOR (2 downto 0);
+      Z : OUT STD_LOGIC
     );
   END COMPONENT;
   
   COMPONENT I2_Sel IS
     PORT(
-      a : IN STD_LOGIC_VECTOR (2 downto 0);
-      b : OUT STD_LOGIC_VECTOR (1 downto 0)
+      Sel : IN STD_LOGIC_VECTOR (2 downto 0);
+      Z : OUT STD_LOGIC_VECTOR (1 downto 0)
     );
   END COMPONENT;
   
   COMPONENT subSel IS
     PORT(
-      a : IN STD_LOGIC_VECTOR (2 downto 0);
-      b : OUT STD_LOGIC
+      Sel : IN STD_LOGIC_VECTOR (2 downto 0);
+      Z : OUT STD_LOGIC
     );
   END COMPONENT;
   

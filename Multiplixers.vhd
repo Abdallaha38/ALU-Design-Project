@@ -265,16 +265,16 @@ USE ieee.std_logic_1164.all;
 
 ENTITY mux8_1 IS
   PORT(
-    D0 : IN STD_LOGIC;
-    D1 : IN STD_LOGIC;
-    D2 : IN STD_LOGIC;
-    D3 : IN STD_LOGIC;
-    D4 : IN STD_LOGIC;
-    D5 : IN STD_LOGIC;
-    D6 : IN STD_LOGIC;
-    D7 : IN STD_LOGIC;
+    a : IN STD_LOGIC;
+    b : IN STD_LOGIC;
+    c : IN STD_LOGIC;
+    d : IN STD_LOGIC;
+    e : IN STD_LOGIC;
+    f : IN STD_LOGIC;
+    g : IN STD_LOGIC;
+    h : IN STD_LOGIC;
     Sel : IN STD_LOGIC_VECTOR (2 downto 0);
-    Z : OUT STD_LOGIC
+    z : OUT STD_LOGIC
   );
 END mux8_1;
 
