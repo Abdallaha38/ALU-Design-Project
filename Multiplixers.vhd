@@ -58,3 +58,57 @@ BEGIN
     
 END structural;
     
+----------------------------------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY mux2_4 IS
+  PORT(
+    a : IN STD_LOGIC_VECTOR (3 downto 0);
+    b : IN STD_LOGIC_VECTOR (3 downto 0);
+    s : IN STD_LOGIC;
+    z : OUT STD_LOGIC_VECTOR (3 downto 0)
+  );
+END mux2_4;
+
+ARCHITECTURE structural OF mux2_4 IS
+  COMPONENT mux2_1 IS
+    PORT (
+    A : IN STD_LOGIC;
+    B : IN STD_LOGIC;
+    Sel : IN STD_LOGIC;
+    z : OUT STD_LOGIC
+  );
+END COMPONENT; 
+
+BEGIN
+  m0: mux2_1 PORT MAP (
+    A => a(0),
+    B => b(0),
+    Sel => s,
+    z => z(0)
+  );
+  
+  m1: mux2_1 PORT MAP (
+    A => a(1),
+    B => b(1),
+    Sel => s,
+    z => z(1)
+  );
+  
+  m2: mux2_1 PORT MAP (
+    A => a(2),
+    B => b(2),
+    Sel => s,
+    z => z(2)
+  );
+  
+  m3: mux2_1 PORT MAP (
+    A => a(3),
+    B => b(3),
+    Sel => s,
+    z => z(3)
+  );
+  
+END structural;
