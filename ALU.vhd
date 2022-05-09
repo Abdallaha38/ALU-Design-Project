@@ -18,8 +18,8 @@ ARCHITECTURE structural OF ALU IS
     PORT (
     A : IN STD_LOGIC_VECTOR (3 downto 0);
     B : IN STD_LOGIC_VECTOR (3 downto 0);
-    OpSel : IN STD_LOGIC_VECTOR (2 downto 0);
-    A_OUT : OUT STD_LOGIC_VECTOR (4 downto 0)
+    Sel : IN STD_LOGIC_VECTOR (2 downto 0);
+    Res : OUT STD_LOGIC_VECTOR (4 downto 0)
   ); 
   END COMPONENT;
 
@@ -27,26 +27,26 @@ ARCHITECTURE structural OF ALU IS
     PORT (
     A : IN STD_LOGIC_VECTOR (3 downto 0);
     B : IN STD_LOGIC_VECTOR (3 downto 0);
-    OpSel : IN STD_LOGIC_VECTOR (2 downto 0);
-    L_OUT : OUT STD_LOGIC_VECTOR (3 downto 0)
+    Sel : IN STD_LOGIC_VECTOR (2 downto 0);
+    Res : OUT STD_LOGIC_VECTOR (3 downto 0)
   ); 
   END COMPONENT;
     
    Component mux2_1 IS
     PORT (
-    mux1 : IN STD_LOGIC;
-    mux2 : IN STD_LOGIC;
-    muxSel : IN STD_LOGIC;
-    muxOut : OUT STD_LOGIC
+    A : IN STD_LOGIC;
+    B : IN STD_LOGIC;
+    Sel : IN STD_LOGIC;
+    z : OUT STD_LOGIC
   );
   END COMPONENT;
 
    Component mux2_4 IS
     PORT (
-    mux1 : IN STD_LOGIC_VECTOR (3 downto 0);
-    mux2 : IN STD_LOGIC_VECTOR (3 downto 0);
-    muxSel : IN STD_LOGIC;
-    muxOut : OUT STD_LOGIC_VECTOR (3 downto 0)
+    a : IN STD_LOGIC_VECTOR (3 downto 0);
+    b : IN STD_LOGIC_VECTOR (3 downto 0);
+    s : IN STD_LOGIC;
+    z : OUT STD_LOGIC_VECTOR (3 downto 0)
   );
   END COMPONENT;
     
@@ -55,29 +55,29 @@ BEGIN
   A_U: AU PORT MAP (
     A => A,
     B => B,
-    OpSel => Sel(2 downto 0),
-    A_OUT => AU_OUT
+    Sel => Sel(2 downto 0),
+    Res => AU_OUT
   );
 
   L_U: LU PORT MAP (
     A => A,
     B => B,
-    OpSel => Sel(2 downto 0),
-    L_OUT => LU_OUT
+    Sel => Sel(2 downto 0),
+    Res => LU_OUT
   );
     
   mux0: mux2_4 PORT MAP (
-    mux1 => AU_OUT(3 downto 0),
-    mux2 => LU_OUT,
-    muxSel => Sel(3),
-    muxOut => Z(3 downto 0)
+    a => AU_OUT(3 downto 0),
+    b => LU_OUT,
+    s => Sel(3),
+    z => Z(3 downto 0)
   );
 
   mux1: mux2_1 PORT MAP (
-    mux1 => AU_OUT(4),
-    mux2 => '0',
-    muxSel => Sel(3),
-    muxOut => Z(4)
+    A => AU_OUT(4),
+    B => '0',
+    Sel => Sel(3),
+    z => Z(4)
   );
      
 END structural;
