@@ -132,7 +132,6 @@ BEGIN
     z0 => U0_OUT
   );
 
-BEGIN
   U1: and_gate1 PORT MAP (
     d1 => D1,
     s0~ => S0,
@@ -141,7 +140,6 @@ BEGIN
     z1 => U1_OUT
   );
 
-BEGIN
   U2: and_gate2 PORT MAP (
     d2 => D2,
     s0~ => S0,
@@ -150,7 +148,6 @@ BEGIN
     z2 => U2_OUT
   );
 
-BEGIN
   U3: and_gate3 PORT MAP (
     d0 => D3,
     s0~ => S0,
@@ -159,7 +156,6 @@ BEGIN
     z3 => U3_OUT
   );
 
-BEGIN
   U4: and_gate4 PORT MAP (
     d4 => D0,
     s0 => S0,
@@ -168,7 +164,6 @@ BEGIN
     z0 => U4_OUT
   );
 
-BEGIN
   U5: and_gate5 PORT MAP (
     d5 => D5,
     s0 => S0,
@@ -177,7 +172,6 @@ BEGIN
     z5 => U5_OUT
   );
 
-BEGIN
   U6: and_gate6 PORT MAP (
     d6 => D6,
     s0 => S0,
@@ -186,7 +180,6 @@ BEGIN
     z6 => U6_OUT
   );
 
-BEGIN
   U7: and_gate7 PORT MAP (
     d0 => D0,
     s0 => S0,
@@ -195,7 +188,6 @@ BEGIN
     z7 => U7_OUT
   );
 
-BEGIN
   U8: OR_GATE8 PORT MAP (
     z0 => U0_OUT,
     z1 => U1_OUT,
