@@ -22,6 +22,15 @@ ARCHITECTURE structural OF ALU IS
     A_OUT : OUT STD_LOGIC_VECTOR (4 downto 0)
   ); 
   END COMPONENT;
+
+  Component LU IS
+    PORT (
+    A : IN STD_LOGIC_VECTOR (3 downto 0);
+    B : IN STD_LOGIC_VECTOR (3 downto 0);
+    OpSel : IN STD_LOGIC_VECTOR (2 downto 0);
+    L_OUT : OUT STD_LOGIC_VECTOR (3 downto 0)
+  ); 
+  END COMPONENT;
     
    Component mux2_1 IS
     PORT (
@@ -29,6 +38,15 @@ ARCHITECTURE structural OF ALU IS
     mux2 : IN STD_LOGIC;
     muxSel : IN STD_LOGIC;
     muxOut : OUT STD_LOGIC
+  );
+  END COMPONENT;
+
+   Component mux2_4 IS
+    PORT (
+    mux1 : IN STD_LOGIC_VECTOR (3 downto 0);
+    mux2 : IN STD_LOGIC_VECTOR (3 downto 0);
+    muxSel : IN STD_LOGIC;
+    muxOut : OUT STD_LOGIC_VECTOR (3 downto 0)
   );
   END COMPONENT;
     
@@ -40,40 +58,28 @@ BEGIN
     OpSel => Sel(2 downto 0),
     A_OUT => AU_OUT
   );
-    
-  mux0: mux2_1 PORT MAP (
-    mux1 => AU_OUT(0),
-    mux2 => LU_OUT(0),
-    muxSel => Sel(3),
-    muxOut => Z(0)
+
+  L_U: LU PORT MAP (
+    A => A,
+    B => B,
+    OpSel => Sel(2 downto 0),
+    L_OUT => LU_OUT
   );
     
+  mux0: mux2_4 PORT MAP (
+    mux1 => AU_OUT(3 downto 0),
+    mux2 => LU_OUT,
+    muxSel => Sel(3),
+    muxOut => Z(3 downto 0)
+  );
+
   mux1: mux2_1 PORT MAP (
-    mux1 => AU_OUT(1),
-    mux2 => LU_OUT(1),
-    muxSel => Sel(3),
-    muxOut => Z(1)
-  );  
-    
-    mux2: mux2_1 PORT MAP (
-    mux1 => AU_OUT(2),
-    mux2 => LU_OUT(2),
-    muxSel => Sel(3),
-    muxOut => Z(2)
-  );
-  
-  mux3: mux2_1 PORT MAP (
-    mux1 => AU_OUT(3),
-    mux2 => LU_OUT(3),
-    muxSel => Sel(3),
-    muxOut => Z(3)
-  );
-  
-  mux4: mux2_1 PORT MAP (
     mux1 => AU_OUT(4),
     mux2 => '0',
     muxSel => Sel(3),
     muxOut => Z(4)
   );
+    
+
     
 END structural;
