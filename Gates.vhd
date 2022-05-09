@@ -300,3 +300,197 @@ ARCHITECTURE model OF xor_gate_5 IS
 BEGIN
   z <= a XOR b XOR c XOR d XOR e;  
 END model;
+
+--------------------------------------------------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+ 
+ENTITY and_gate_2Q IS
+  PORT (
+    a : IN STD_LOGIC_VECTOR (3 downto 0);
+    b : IN STD_LOGIC_VECTOR (3 downto 0);
+    z : OUT STD_LOGIC_VECTOR (3 downto 0)
+  );
+END and_gate_2Q;
+ 
+ARCHITECTURE structural OF and_gate_2Q IS
+  COMPONENT and_gate IS
+    PORT(
+      a : IN STD_LOGIC;
+      b : IN STD_LOGIC;
+      z : OUT STD_LOGIC
+    );
+  END COMPONENT;
+
+BEGIN
+
+  U0: and_gate PORT MAP (
+    a => a(0),
+    b => b(0),
+    z => z(0)
+  );
+  
+  U1: and_gate PORT MAP (
+    a => a(1),
+    b => b(1),
+    z => z(1)
+  );
+  
+  U2: and_gate PORT MAP (
+    a => a(2),
+    b => b(2),
+    z => z(2)
+  );
+
+  U3: and_gate PORT MAP (
+    a => a(3),
+    b => b(3),
+    z => z(3)
+  );
+  
+END structural;
+
+--------------------------------------------------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+ 
+ENTITY or_gate_2Q IS
+  PORT (
+    a : IN STD_LOGIC_VECTOR (3 downto 0);
+    b : IN STD_LOGIC_VECTOR (3 downto 0);
+    z : OUT STD_LOGIC_VECTOR (3 downto 0)
+  );
+END or_gate_2Q;
+ 
+ARCHITECTURE structural OF or_gate_2Q IS
+  COMPONENT or_gate IS
+    PORT(
+      a : IN STD_LOGIC;
+      b : IN STD_LOGIC;
+      z : OUT STD_LOGIC
+    );
+  END COMPONENT;
+
+BEGIN
+
+  U0: or_gate PORT MAP (
+    a => a(0),
+    b => b(0),
+    z => z(0)
+  );
+  
+  U1: or_gate PORT MAP (
+    a => a(1),
+    b => b(1),
+    z => z(1)
+  );
+  
+  U2: or_gate PORT MAP (
+    a => a(2),
+    b => b(2),
+    z => z(2)
+  );
+
+  U3: or_gate PORT MAP (
+    a => a(3),
+    b => b(3),
+    z => z(3)
+  );
+  
+END structural;
+
+--------------------------------------------------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+ 
+ENTITY xor_gate_2Q IS
+  PORT (
+    a : IN STD_LOGIC_VECTOR (3 downto 0);
+    b : IN STD_LOGIC_VECTOR (3 downto 0);
+    z : OUT STD_LOGIC_VECTOR (3 downto 0)
+  );
+END xor_gate_2Q;
+ 
+ARCHITECTURE structural OF xor_gate_2Q IS
+  COMPONENT xor_gate IS
+    PORT(
+      a : IN STD_LOGIC;
+      b : IN STD_LOGIC;
+      z : OUT STD_LOGIC
+    );
+  END COMPONENT;
+
+BEGIN
+
+  U0: xor_gate PORT MAP (
+    a => a(0),
+    b => b(0),
+    z => z(0)
+  );
+  
+  U1: xor_gate PORT MAP (
+    a => a(1),
+    b => b(1),
+    z => z(1)
+  );
+  
+  U2: xor_gate PORT MAP (
+    a => a(2),
+    b => b(2),
+    z => z(2)
+  );
+
+  U3: xor_gate PORT MAP (
+    a => a(3),
+    b => b(3),
+    z => z(3)
+  );
+  
+END structural;
+
+--------------------------------------------------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+ 
+ENTITY not_gate_Q IS
+  PORT (
+    a : IN STD_LOGIC_VECTOR (3 downto 0);
+    z : OUT STD_LOGIC_VECTOR (3 downto 0)
+  );
+END not_gate_Q;
+ 
+ARCHITECTURE structural OF not_gate_Q IS
+  COMPONENT not_gate IS
+    PORT(
+      a : IN STD_LOGIC;
+      z : OUT STD_LOGIC
+    );
+  END COMPONENT;
+
+BEGIN
+
+  U0: not_gate PORT MAP (
+    a => a(0),
+    z => z(0)
+  );
+  
+  U1: not_gate PORT MAP (
+    a => a(1),
+    z => z(1)
+  );
+  
+  U2: not_gate PORT MAP (
+    a => a(2),
+    z => z(2)
+  );
+
+  U3: not_gate PORT MAP (
+    a => a(3),
+    z => z(3)
+  );
+  
+END structural;
