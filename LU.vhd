@@ -123,5 +123,5 @@ BEGIN
         z : Res
     );
 
-
+END structural;
 

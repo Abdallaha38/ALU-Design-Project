@@ -79,7 +79,5 @@ BEGIN
     muxSel => Sel(3),
     muxOut => Z(4)
   );
-    
-
-    
+     
 END structural;
